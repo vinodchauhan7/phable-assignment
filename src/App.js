@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import PokemonContext from './utils/context';
+import {pokemonStore,InitialState} from './utils/reducer';
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import ShowPokemons from './components/show-pokemons/show-pokemons.component';
+import AddPokemon from './components/add-pokemon/add-pokemon.component';
 import './App.css';
 
+
 function App() {
+  const [store,pokemonDispatch] = React.useReducer(pokemonStore,InitialState);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Pokemon's Showcase</h1>
+      
+      <PokemonContext.Provider value={[store,pokemonDispatch]}>
+        <BrowserRouter>
+       
+          <Switch>
+            <Route exact path="/" component={ShowPokemons}/>
+            <Route path="/addPokemon" component={AddPokemon}/>
+          </Switch>
+        </BrowserRouter>
+      </PokemonContext.Provider>
+     
     </div>
   );
 }
