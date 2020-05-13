@@ -64,11 +64,10 @@ const AddPokemon = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(pokemon.name.english !== ""  || pokemon.type.length !== 0){
-            pokemonDispatch({type:'ADD',payload:pokemon});
-            alert("Pokemon Successfully Added");
-            props.history.push("/");
-        }
+        pokemonDispatch({type:'ADD',payload:pokemon});
+        alert("Pokemon Successfully Added");
+        props.history.push("/");
+        
     }
 
     return (
@@ -82,24 +81,24 @@ const AddPokemon = (props) => {
         <input type="text" name="name" id="name" placeholder="Enter your name here" required onChange={handleChange}/>
       </li>
         <li>
-        <input type="file" onChange={fileChangedHandler}/>
+        <input type="file" required onChange={fileChangedHandler}/>
         </li>
       <p>Base</p>
       <li>
         <label htmlFor="attack">Attack</label>
-        <input type="number" name="Attack" id="attack" placeholder="Attack" onChange={handleChange}/>
+        <input type="number" name="Attack" id="attack" required placeholder="Attack" onChange={handleChange}/>
       </li>
       <li>
         <label htmlFor="defense">Defense</label>
-        <input type="number" id="defense" name="Defense" placeholder="Defense"onChange={handleChange}/>
+        <input type="number" id="defense" name="Defense" required placeholder="Defense"onChange={handleChange}/>
       </li>
       <li>
         <label htmlFor="HP">HP</label>
-        <input type="number" id="HP" name="HP" placeholder="HP" onChange={handleChange}/>
+        <input type="number" id="HP" name="HP" placeholder="HP" required onChange={handleChange}/>
       </li>
       <li>
         <label htmlFor="Speed">Speed</label>
-        <input type="number" id="Speed" name="Speed" placeholder="Speed" onChange={handleChange}/>
+        <input type="number" id="Speed" name="Speed" placeholder="Speed" required onChange={handleChange}/>
       </li>
       <p>Type</p>
       <li>

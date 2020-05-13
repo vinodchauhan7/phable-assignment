@@ -27,9 +27,6 @@ const pokemonStore = (state = InitialState,action) => {
                
                 localStorage.setItem("images",JSON.stringify(storageObj));
             }
-            if(localStorage.getItem("pokemons")){
-                localStorage.setItem("pokemons",newState);
-            }
             state = { ...newState}
             localStorage.setItem("pokemons",JSON.stringify(state));
             return state;
@@ -50,8 +47,9 @@ const pokemonStore = (state = InitialState,action) => {
             }
            
              localStorage.setItem("images",JSON.stringify(obj));
-             localStorage.setItem("pokemons",JSON.stringify(state));
+             
             state = { ...newState}
+            localStorage.setItem("pokemons",JSON.stringify(state));
             return state;
         default:
             return state;        
